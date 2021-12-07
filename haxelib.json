@@ -1,0 +1,12 @@
+{
+  "name": "heat_core",
+  "description": "Core components for the heat library set",
+  "url" : "https://github.com/mrrogge/heat_core",
+  "license": "MIT",
+  "tags": [],
+  "version": "0.1.1",
+  "releasenote": "",
+  "contributors": ["mrrogge"],
+  "dependencies": {},
+  "classPath": "src"
+}
