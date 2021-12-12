@@ -1,0 +1,7 @@
+# @install: lix --silent download "haxelib:/dox#1.6.0" into dox/1.6.0/haxelib
+# NOTE: there's currently an issue with lix/haxeshim with the path for the run directive. The following line fixes the path, compared what was automatically generated (the line below it).
+# @run: haxelib run-dir dox ~/haxe/haxelib/dox/1,6,0
+## @run: haxelib run-dir dox ${HAXE_LIBCACHE}/dox/1.6.0/haxelib
+
+-cp ${HAXE_LIBCACHE}/dox/1.6.0/haxelib/src
+-D dox=1.6.0

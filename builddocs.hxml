@@ -1,0 +1,7 @@
+-cp src
+-D doc-gen
+--macro include('heat')
+extraParams.hxml
+--no-output
+--xml bin/types.xml
+--hl dummy
