@@ -1,6 +1,7 @@
-package heat.core;
+package heat.core.ref;
 
-class MTuple2<T0, T1> {
+@:noDoc
+private class MTuple2<T0, T1> {
     public var e0:T0;
     public var e1:T1;
 
