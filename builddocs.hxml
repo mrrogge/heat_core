@@ -4,4 +4,4 @@
 extraParams.hxml
 --no-output
 --xml bin/types.xml
---hl dummy
+--interp
