@@ -72,7 +72,7 @@ class TupleBuilder {
     public static function buildMTuple(arity:Int):Void {
         if (arity < 0) Context.error('arity must be >= 0 but is $arity.', Context.currentPos());
         try {
-            Context.getType('heat.core.Tuple$arity');
+            Context.getType('heat.core.MTuple$arity');
         }
         catch (e:String) {
             //The element fields
@@ -116,13 +116,13 @@ class TupleBuilder {
 
             var clsDef:haxe.macro.Expr.TypeDefinition = {
                 pos: Context.currentPos(),
-                name: 'Tuple$arity',
+                name: 'MTuple$arity',
                 pack: ["heat", "core"],
                 kind:TDClass(),
                 params: [for (i in 0...arity) {name: 'T$i'}],
                 fields: fields
             };
-            Context.defineModule('heat.core.Tuple$arity',
+            Context.defineModule('heat.core.MTuple$arity',
                 [clsDef]
             );
         }
