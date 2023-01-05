@@ -133,7 +133,7 @@ abstract VectorFloat2(Vector2<Float>) from Vector2<Float> to Vector2<Float> {
 
         If the vector has a length of zero, then this method returns the same vector, i.e. without copying it.
     **/
-    public inline function normalize():VectorFloat2 {
+    public function normalize():VectorFloat2 {
         return if (this.x == 0 && this.y == 0) {
             this;
          }
