@@ -16,9 +16,7 @@ abstract VectorFloat2(Vector2<Float>) from Vector2<Float> to Vector2<Float> {
     }
 
     public inline function distSquared(other:VectorFloat2):Float {
-        var dx = this.x - other.x;
-        var dy = this.y - other.y;
-        return dx*dx + dy*dy;
+        return (this.x-other.x)*(this.x-other.x) + (this.y-other.y)*(this.y-other.y);
     }
 
     public inline function dist(other:VectorFloat2):Float {
