@@ -15,12 +15,20 @@ abstract VectorFloat2(Vector2<Float>) from Vector2<Float> to Vector2<Float> {
         return Math.sqrt(lengthSquared());
     }
 
-    public inline function distSquared(other:VectorFloat2):Float {
-        return (this.x-other.x)*(this.x-other.x) + (this.y-other.y)*(this.y-other.y);
+    public static inline function distSquared(v1:VectorFloat2, v2:VectorFloat2):Float {
+        return (v1.x-v2.x)*(v1.x-v2.x) + (v1.y-v2.y)*(v1.y-v2.y);
     }
 
-    public inline function dist(other:VectorFloat2):Float {
-        return Math.sqrt(distSquared(other));
+    public inline function distSquaredFrom(other:VectorFloat2):Float {
+        return distSquared(this, other);
+    }
+
+    public static inline function dist(v1:VectorFloat2, v2:VectorFloat2):Float {
+        return Math.sqrt(distSquared(v1, v2));
+    }
+
+    public inline function distFrom(other:VectorFloat2):Float {
+        return dist(this, other);
     }
 
     /**
