@@ -21,6 +21,11 @@ class Pool<T> {
         this.init = init == null ? defaultInit : init;
     }
 
+    public function setInit(init:(el:T)->T):Pool<T> {
+        this.init = init;
+        return this;
+    }
+
     /**
         Retrieves a `T` from the pool.
 
