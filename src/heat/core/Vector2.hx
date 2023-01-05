@@ -10,15 +10,15 @@ class Vector2<T> {
         this.y = y;
     }
 
-    public function toMutable():MVector2<T> {
+    public inline function toMutable():MVector2<T> {
         return new MVector2<T>(x, y);
     }
 
-    public static function fromMutable<T>(mutable:MVector2<T>):Vector2<T> {
+    public static inline function fromMutable<T>(mutable:MVector2<T>):Vector2<T> {
         return new Vector2<T>(mutable.x, mutable.y);
     }
 
-    public function clone():Vector2<T> {
+    public inline function clone():Vector2<T> {
         return new Vector2(x, y);
     }
 
