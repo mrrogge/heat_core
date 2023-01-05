@@ -77,7 +77,7 @@ abstract VectorFloat2(Vector2<Float>) from Vector2<Float> to Vector2<Float> {
         Negate a vector, returning a new vector.
     **/
     @:op(-A)
-    public inline function op_not():VectorFloat2 {
+    public inline function op_negate():VectorFloat2 {
         return new VectorFloat2(-this.x, -this.y);
     }
 
