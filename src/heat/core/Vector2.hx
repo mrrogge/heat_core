@@ -21,4 +21,11 @@ class Vector2<T> {
     public function clone():Vector2<T> {
         return new Vector2(x, y);
     }
+
+    /**
+        Compare two vectors by parts, returning true if like parts are all equal (otherwise false).
+    **/
+    public static inline function areSame<T>(v1:Vector2<T>, v2:Vector2<T>):Bool {
+        return v1.x == v2.x && v1.y == v2.y;
+    }
 }
