@@ -93,14 +93,21 @@ abstract VectorFloat2(Vector2<Float>) from Vector2<Float> to Vector2<Float> {
     }
 
     /**
-        Cross product of this vector with another vector.
+        Cross product of two vectors.
         
         Returns a Float corresponding to the 3rd dimensional component of the cross product. The sign follows right-hand rule convention.
 
         (TODO: maybe consider changing this to return a VectorFloat3?)
     **/
-    public inline function cross(other:VectorFloat2):Float {
-        return this.x*other.y - this.y*other.x;
+    public static inline function cross(v1:VectorFloat2, v2:VectorFloat2):Float {
+        return v1.x*v2.y - v1.y*v2.x;
+    }
+
+    /**
+        Cross product of this vector with another vector.
+    **/
+    public inline function crossWith(other:VectorFloat2):Float {
+        return cross(this, other);
     }
 
     /**
