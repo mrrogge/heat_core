@@ -56,4 +56,11 @@ abstract MVector2<T>(Vector<T>) from Vector<T> to Vector<T> {
         target.init(x, y);
         return this;
     }
+
+    /**
+        Compare two vectors by parts, returning true if like parts are all equal (otherwise false).
+    **/
+    public static inline function areSame<T>(v1:MVector2<T>, v2:MVector2<T>):Bool {
+        return v1.x == v2.x && v1.y == v2.y;
+    }
 }
