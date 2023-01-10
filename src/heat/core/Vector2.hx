@@ -1,13 +1,19 @@
 package heat.core;
 
 /**An immutable vector with 2 components.**/
-class Vector2<T> {
-    public final x:T;
-    public final y:T;
+class Vector2<T> implements IVector2<T> {
+    public var x(get, never):T;
+    inline function get_x():T return _x;
+    
+    public var y(get, never):T;
+    inline function get_y():T return _y;
+
+    final _x:T;
+    final _y:T;
 
     public function new(x:T, y:T) {
-        this.x = x;
-        this.y = y;
+        _x = x;
+        _y = y;
     }
 
     public inline function toMutable():MVector2<T> {
@@ -25,7 +31,7 @@ class Vector2<T> {
     /**
         Compare two vectors by parts, returning true if like parts are all equal (otherwise false).
     **/
-    public static inline function areSame<T>(v1:Vector2<T>, v2:Vector2<T>):Bool {
+    public static inline function areSame<T>(v1:IVector2<T>, v2:IVector2<T>):Bool {
         return v1.x == v2.x && v1.y == v2.y;
     }
 }
