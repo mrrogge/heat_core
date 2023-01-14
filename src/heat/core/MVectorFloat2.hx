@@ -1,5 +1,7 @@
 package heat.core;
 
+using heat.core.MathTools;
+
 @:forward
 @:forwardStatics
 abstract MVectorFloat2(MVector2<Float>) from MVector2<Float> to MVector2<Float> 
@@ -166,20 +168,6 @@ abstract MVectorFloat2(MVector2<Float>) from MVector2<Float> to MVector2<Float>
     }
 
     /**
-        Check if this vector has the same part values as another vector. Returns a corresponding Bool value.
-    **/
-    public inline function isSameAs(other:IVector2<Float>):Bool {
-        return VectorFloat2.areSame(this, other);
-    }
-
-    /**
-        Check if this vector has the same part values as another vector. Returns a BoolVector2 with part values corresponding to the comparison results.
-    **/
-    public inline function isSameByPartsWith(other:IVector2<Float>):MVectorBool2 {
-        return new MVectorBool2(this.x == other.x, this.y == other.y);
-    }
-
-    /**
         Returns the angle (in radians) corresponding to the vector's parts (i.e. Cartesian to polar conversion).
     **/  
     public inline function angle():Float {
@@ -211,5 +199,13 @@ abstract MVectorFloat2(MVector2<Float>) from MVector2<Float> to MVector2<Float>
 
     public static inline function fromBools(source:IVector2<Bool>):MVectorFloat2 {
         return new MVectorFloat2(source.x ? 1 : 0, source.y ? 1 : 0);
+    }
+
+    public inline function isCloseTo(other:IVector2<Float>):Bool {
+        return VectorFloat2.areClose(this, other);
+    }
+
+    public inline function isCloseByPartsWith(other:IVector2<Float>):MVectorBool2 {
+        return new MVectorBool2(this.x - other.x <= Math.FP_ERR() && this.y - other.y <= Math.FP_ERR());
     }
 }

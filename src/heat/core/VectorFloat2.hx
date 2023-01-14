@@ -1,5 +1,7 @@
 package heat.core;
 
+using heat.core.MathTools;
+
 @:forward
 @:forwardStatics
 abstract VectorFloat2(Vector2<Float>) from Vector2<Float> to Vector2<Float> {
@@ -119,20 +121,6 @@ abstract VectorFloat2(Vector2<Float>) from Vector2<Float> to Vector2<Float> {
     }
 
     /**
-        Check if this vector has the same part values as another vector. Returns a corresponding Bool value.
-    **/
-    public inline function isSameAs(other:IVector2<Float>):Bool {
-        return VectorFloat2.areSame(this, other);
-    }
-
-    /**
-        Check if this vector has the same part values as another vector. Returns a BoolVector2 with part values corresponding to the comparison results.
-    **/
-    public inline function isSameByPartsWith(other:IVector2<Float>):VectorBool2 {
-        return new VectorBool2(this.x == other.x, this.y == other.y);
-    }
-
-    /**
         Returns the angle (in radians) corresponding to the vector's parts (i.e. Cartesian to polar conversion).
     **/  
     public inline function angle():Float {
@@ -154,7 +142,7 @@ abstract VectorFloat2(Vector2<Float>) from Vector2<Float> to Vector2<Float> {
          };
     } 
 
-    public function signs():VectorFloat2 {
+    public inline function signs():VectorFloat2 {
         return new VectorFloat2(this.x == 0 ? 0 : this.x/Math.abs(this.x), 
             this.y == 0 ? 0 : this.y/Math.abs(this.y));
     }
@@ -165,5 +153,17 @@ abstract VectorFloat2(Vector2<Float>) from Vector2<Float> to Vector2<Float> {
 
     public static inline function fromBools(source:IVector2<Bool>):VectorFloat2 {
         return new VectorFloat2(source.x ? 1 : 0, source.y ? 1 : 0);
+    }
+
+    public static inline function areClose(v1:IVector2<Float>, v2:IVector2<Float>):Bool {
+        return v1.x - v2.x <= Math.FP_ERR() && v1.y - v2.y <= Math.FP_ERR();
+    }
+
+    public inline function isCloseTo(other:IVector2<Float>):Bool {
+        return areClose(this, other);
+    }
+
+    public inline function isCloseByPartsWith(other:IVector2<Float>):VectorBool2 {
+        return new VectorBool2(this.x - other.x <= Math.FP_ERR() && this.y - other.y <= Math.FP_ERR());
     }
 }
