@@ -1,5 +1,6 @@
 package heat.core;
 
+using Math;
 using heat.core.MathTools;
 
 @:forward
@@ -142,9 +143,9 @@ abstract VectorFloat2(Vector2<Float>) from Vector2<Float> to Vector2<Float> {
          };
     } 
 
-    public inline function signs():VectorFloat2 {
-        return new VectorFloat2(this.x == 0 ? 0 : this.x/Math.abs(this.x), 
-            this.y == 0 ? 0 : this.y/Math.abs(this.y));
+    public inline function signs():VectorInt2 {
+        return new VectorInt2(this.x < 0 ? -1 : (this.x == 0 ? 0 : 1),
+            this.y < 0 ? -1 : (this.y == 0 ? 0 : 1));
     }
 
     public inline function toBools():VectorBool2 {
@@ -165,5 +166,17 @@ abstract VectorFloat2(Vector2<Float>) from Vector2<Float> to Vector2<Float> {
 
     public inline function isCloseByPartsWith(other:IVector2<Float>):VectorBool2 {
         return new VectorBool2(this.x - other.x <= Math.FP_ERR() && this.y - other.y <= Math.FP_ERR());
+    }
+
+    public static inline function fromVectorInt2(source:VectorInt2):VectorFloat2 {
+        return new VectorFloat2(source.x, source.y);
+    }
+
+    public inline function toVectorInt2():VectorInt2 {
+        return new VectorInt2(Std.int(this.x), Std.int(this.y));
+    }
+
+    public inline function round():VectorInt2 {
+        return new VectorInt2(this.x.round(), this.y.round());
     }
 }
