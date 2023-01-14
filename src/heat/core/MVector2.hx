@@ -57,4 +57,25 @@ class MVector2<T> implements IVector2<T> {
         target.init(x, y);
         return this;
     }
+
+    /**
+        Check if this vector has the same part values as another vector. Returns a corresponding Bool value.
+    **/
+    public inline function isSameAs(other:IVector2<T>):Bool {
+        return Vector2.areSame(this, other);
+    }
+
+    /**
+        Check part values between two vectors for sameness. Returns a new boolean vector corresponding to the comparison results.
+    **/
+    public static inline function areSameByParts<T>(v1:IVector2<T>, v2:IVector2<T>):MVectorBool2 {
+        return new MVectorBool2(v1.x == v2.x, v1.y == v2.y);
+    }
+
+    /**
+        Check part values against another vector. Returns a new boolean vector corresponding to the comparison results.
+    **/
+    public inline function isSameByPartsWith(other:IVector2<T>):MVectorBool2 {
+        return areSameByParts(this, other);
+    }
 }

@@ -34,4 +34,27 @@ class Vector2<T> implements IVector2<T> {
     public static inline function areSame<T>(v1:IVector2<T>, v2:IVector2<T>):Bool {
         return v1.x == v2.x && v1.y == v2.y;
     }
+       
+    /**
+        Check if this vector has the same part values as another vector. Returns a corresponding Bool value.
+    **/
+    public inline function isSameAs(other:IVector2<T>):Bool {
+        return areSame(this, other);
+    }
+
+    /**
+        Check part values between two vectors for sameness. Returns a new boolean vector corresponding to the comparison results.
+    **/
+    public static inline function areSameByParts<T>(v1:IVector2<T>, v2:IVector2<T>):VectorBool2 {
+        return new VectorBool2(v1.x == v2.x, v1.y == v2.y);
+    }
+
+    /**
+        Check part values against another vector. Returns a new boolean vector corresponding to the comparison results.
+    **/
+    public inline function isSameByPartsWith(other:IVector2<T>):VectorBool2 {
+        return areSameByParts(this, other);
+    }
+
+
 }
