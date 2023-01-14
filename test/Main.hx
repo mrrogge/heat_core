@@ -1,10 +1,48 @@
 using buddy.Should;
 using Lambda;
 
-import heat.core.*;
+using heat.AllCore;
 
-class Main extends buddy.SingleSuite {
+class Main implements buddy.Buddy<[
+    Vectors
+]> {}
+
+class Vectors extends buddy.BuddySuite {
     public function new() {
+        describe("For vectors: ", {
+            it("toMutable() copies values", {
+                var immutable = new Vector2<Float>(1, 2);
+                var mutable = immutable.toMutable();
+                mutable.x.should.be(1);
+                mutable.y.should.be(2);
+            }); 
+            it("fromMutable() copies values", {
+                var mutable = new MVector2<Float>(1, 2);
+                var immutable = Vector2.fromMutable(mutable);
+                immutable.x.should.be(1);
+                immutable.y.should.be(2);
+            });
+            it("toImmutable() copies values", {
+                var mutable = new MVector2<Float>(1, 2);
+                var immutable = mutable.toImmutable();
+                immutable.x.should.be(1);
+                immutable.y.should.be(2);
+            }); 
+            it("fromImmutable() copies values", {
+                var immutable = new Vector2<Float>(1, 2);
+                var mutable = MVector2.fromImmutable(immutable);
+                mutable.x.should.be(1);
+                mutable.y.should.be(2);
+            });
+            it("clone() copies values", {
+                var immutable = new Vector2<Float>(1, 2);
+                immutable.clone().x.should.be(1);
+                immutable.clone().y.should.be(2);
+                var mutable = new MVector2<Float>(1, 2);
+                mutable.clone().x.should.be(1);
+                mutable.clone().y.should.be(2);
+            });
+        });
         describe("For float vectors: ", {
             it("Adding mutable plus immutable returns mutable (following LHS)", {
                 var mutable = new MVectorFloat2();
@@ -27,5 +65,5 @@ class Main extends buddy.SingleSuite {
                 (immutable - mutable).should.beType(Vector2);
             });
         });
-    };
+    }
 }
