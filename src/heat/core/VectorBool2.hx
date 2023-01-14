@@ -33,13 +33,6 @@ abstract VectorBool2(Vector2<Bool>) from Vector2<Bool> to Vector2<Bool> {
         return new VectorBool2(!this.x, !this.y);
     }
 
-    /**
-        Check if this vector has the same part values as another vector. Returns a corresponding Bool value.
-    **/
-    public inline function isSameAs(other:IVector2<Bool>):Bool {
-        return VectorBool2.areSame(this, other);
-    }
-
     public inline function toFloats():VectorFloat2 {
         return new VectorFloat2(this.x ? 1 : 0, this.y ? 1 : 0);
     }
