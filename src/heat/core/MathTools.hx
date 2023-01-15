@@ -18,4 +18,8 @@ class MathTools {
     public static inline function nearest(cls:Class<Math>, x:Float, a:Float, b:Float):Float {
         return (Math.abs(a-x) < Math.abs(b-x)) ? a : b;
     }
+
+    public static inline function sign(cls:Class<Math>, x:Float):Int {
+        return x < 0 ? -1 : (x == 0 ? 0 : 1);
+    }
 }

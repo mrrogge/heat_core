@@ -169,8 +169,7 @@ abstract VectorInt2(Vector2<Int>) from Vector2<Int> to Vector2<Int> {
     } 
 
     public inline function signs():VectorInt2 {
-        return new VectorInt2(this.x < 0 ? -1 : (this.x == 0 ? 0 : 1),
-            this.y < 0 ? -1 : (this.y == 0 ? 0 : 1));
+        return new VectorInt2(Math.sign(this.x), Math.sign(this.y));
     }
 
     public inline function toBools():VectorBool2 {

@@ -144,8 +144,7 @@ abstract VectorFloat2(Vector2<Float>) from Vector2<Float> to Vector2<Float> {
     } 
 
     public inline function signs():VectorInt2 {
-        return new VectorInt2(this.x < 0 ? -1 : (this.x == 0 ? 0 : 1),
-            this.y < 0 ? -1 : (this.y == 0 ? 0 : 1));
+        return new VectorInt2(Math.sign(this.x), Math.sign(this.y));
     }
 
     public inline function toBools():VectorBool2 {
