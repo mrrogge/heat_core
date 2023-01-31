@@ -10,6 +10,12 @@ abstract MVectorFloat2(MVector2<Float>) from MVector2<Float> to MVector2<Float>
         this = new MVector2<Float>(x, y);
     }
 
+    public function init(x=0., y=0.):MVectorFloat2 {
+        this.x = x;
+        this.y = y;
+        return this;
+    }
+
     public inline function lengthSquared():Float {
         return this.x*this.x + this.y*this.y;
     }
