@@ -6,6 +6,8 @@ using heat.core.MathTools;
 @:forward
 @:forwardStatics
 abstract VectorFloat2(Vector2<Float>) from Vector2<Float> to Vector2<Float> {
+    public static final ORIGIN = new VectorFloat2(0, 0);
+
     public inline function new(x=0., y=0.) {
         this = new Vector2<Float>(x, y);
     }
@@ -179,5 +181,3 @@ abstract VectorFloat2(Vector2<Float>) from Vector2<Float> to Vector2<Float> {
         return new VectorInt2(this.x.round(), this.y.round());
     }
 }
-
-final ORIGIN = new VectorFloat2(0, 0);
