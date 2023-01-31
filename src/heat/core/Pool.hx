@@ -45,8 +45,9 @@ class Pool<T> {
 
         @param element The element to add.
     **/
-    public inline function put(element:T) {
+    public inline function put(element:T):Pool<T> {
         stack.add(element);
+        return this;
     }
 
     /**
