@@ -10,6 +10,12 @@ abstract MVectorInt2(MVector2<Int>) from MVector2<Int> to MVector2<Int>
         this = new MVector2<Int>(x, y);
     }
 
+    public function init(x=0, y=0):MVectorInt2 {
+        this.x = x;
+        this.y = y;
+        return this;
+    }
+
     public inline function lengthSquared():Int {
         return this.x*this.x + this.y*this.y;
     }
