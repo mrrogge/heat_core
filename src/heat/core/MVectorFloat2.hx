@@ -28,7 +28,7 @@ abstract MVectorFloat2(MVector2<Float>) from MVector2<Float> to MVector2<Float>
         return VectorFloat2.distSquared(this, other);
     }
 
-    public inline function distFrom(other:MVectorFloat2):Float {
+    public inline function distFrom(other:IVector2<Float>):Float {
         return VectorFloat2.dist(this, other);
     }
 
@@ -61,7 +61,7 @@ abstract MVectorFloat2(MVector2<Float>) from MVector2<Float> to MVector2<Float>
     /**
         Subtract a vector from this one in place.
     **/
-    public function subWith(other:MVectorFloat2):MVectorFloat2 {
+    public function subWith(other:IVector2<Float>):MVectorFloat2 {
         this.x -= other.x;
         this.y -= other.y;
         return this;
